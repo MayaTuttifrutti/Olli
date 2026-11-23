@@ -1,0 +1,79 @@
+@import "tailwindcss";
+@custom-variant dark (&:where(.dark, .dark *));
+
+@layer base {
+  :root {
+    --font-display: "DM Sans", system-ui, -apple-system, sans-serif;
+    --font-sans: "DM Sans", system-ui, -apple-system, sans-serif;
+    --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+  }
+
+  html {
+    font-family: var(--font-sans);
+    scroll-behavior: smooth;
+  }
+
+  h1, h2, h3, .font-display {
+    font-family: var(--font-display);
+    letter-spacing: -0.025em;
+    text-wrap: balance;
+  }
+
+  .font-mono,
+  .tabular-nums {
+    font-variant-numeric: tabular-nums;
+  }
+}
+
+/* Suno-inspired warm gradient accent & atmospheric hero aura */
+.suno-gradient {
+  background-image: linear-gradient(135deg, #f43f5e 0%, #fb7185 28%, #f97316 68%, #f59e0b 100%);
+}
+
+.suno-gradient:hover {
+  background-image: linear-gradient(135deg, #fb7185 0%, #fb923c 55%, #fbbf24 100%);
+}
+
+.suno-aura {
+  background-image:
+    radial-gradient(60% 90% at 85% 15%, rgba(244, 63, 94, 0.16), transparent 65%),
+    radial-gradient(55% 85% at 25% 10%, rgba(245, 158, 11, 0.15), transparent 65%);
+}
+
+.dark .suno-aura {
+  background-image:
+    radial-gradient(60% 90% at 85% 15%, rgba(244, 63, 94, 0.18), transparent 65%),
+    radial-gradient(55% 85% at 25% 10%, rgba(245, 158, 11, 0.16), transparent 65%);
+}
+
+/* Dark mode optical compensation */
+.dark body {
+  letter-spacing: 0.004em;
+}
+
+/* Subtle custom scrollbars */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(168, 162, 158, 0.25);
+  border-radius: 9999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(168, 162, 158, 0.45);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
